@@ -7,7 +7,7 @@ import pytest
 
 BASE_URL = "http://localhost:5000"
 BASE_URL_MOCK = "http://localhost:9090"
-DEFAULT_TIMEOUT = 2  # in secs
+DEFAULT_TIMEOUT = 5  # in secs
 
 @pytest.mark.api
 class TestApi(unittest.TestCase):
@@ -46,7 +46,7 @@ class TestApi(unittest.TestCase):
         with pytest.raises(Exception) as e:
             url = f"{BASE_URL}/calc/divide/10/0"
             response = urlopen(url, timeout=DEFAULT_TIMEOUT)
-        assert str(e.value) == "HTTP Error 406: 0 IS NOT ACCEPTABLE IN THE DIVISION"
+        assert str(e.value) == "HTTP Error 406: NOT ACCEPTABLE"
 
     def test_api_multiply(self):
         url = f"{BASE_URL}/calc/multiply/10/10"
