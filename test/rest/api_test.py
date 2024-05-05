@@ -35,5 +35,26 @@ class TestApi(unittest.TestCase):
             response.read().decode(), "8", "ERROR SQRT"
         )
 
+    def test_api_divide(self):
+        url = f"{BASE_URL}/calc/divide/10/1"
+        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(
+            response.status, http.client.OK, f"Error en este test API en {url}")
+        self.assertEqual(response.read().decode(), "10.0", "ERROR DIVIDE")
+
+    def test_api_divide_by_zero(self):
+        with pytest.raises(Exception) as e:
+            url = f"{BASE_URL}/calc/divide/10/0"
+            response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        assert str(e.value) == "HTTP Error 406: 0 IS NOT ACCEPTABLE IN THE DIVISION"
+
+    def test_api_multiply(self):
+        url = f"{BASE_URL}/calc/multiply/10/10"
+        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+        self.assertEqual(
+            response.status, http.client.OK, f"Error en este test API en {url}"
+        )
+        self.assertEqual(response.read().decode(), "100", "ERROR MULTIPLY")
+
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()
