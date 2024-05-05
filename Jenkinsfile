@@ -41,7 +41,7 @@ pipeline {
                         flask run &
                         sleep 6
                         java -jar /usr/wiremock/wiremock-standalone-3.5.4.jar --port 9090 --root-dir /var/lib/jenkins/workspace/DevOps Unir 2024/Prueba_Unitaria/test/wiremock &
-                        sleep6
+                        sleep 6
                     '''
                     sh "pwd"
                     sh 'python3 -m pytest --junitxml=result-unit.xml test/rest'
