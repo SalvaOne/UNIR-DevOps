@@ -3,10 +3,13 @@ pipeline {
     
     stages {
         stage('Clean Ws') {
-            //Limpieza del ws antes de descargar
-            echo 'Se va a proceder a limpiar el Ws, gracias por su paciencia'
-            deleteDir()
+            steps {
+                //Limpieza del ws antes de descargar
+                echo 'Se va a proceder a limpiar el Ws, gracias por su paciencia'
+                deleteDir()
+            }
         }
+
         stage('Get Code') {
             steps {
                 script {
