@@ -45,13 +45,14 @@ pipeline {
                     '''
                     sh "pwd"
                     sh 'python3 -m pytest --junitxml=result-unit.xml test/rest'
-                    sh 'sleep 3'
+                    stash includes: 'result-unit.xml', name: 'results'
                 }
             }
             
         }
         stage('Graphic') {
             steps {
+                unstash 'results'
                 junit 'result-unit.xml'
                 echo 'Test terminado y gráfica creada/actualizada'
             }
