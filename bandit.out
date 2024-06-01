@@ -1,0 +1,2 @@
+/var/lib/jenkins/workspace/DevOps_Unir_2024/Tarea1-ApartadoB/test/rest/api_test.py:20: [B310] Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+/var/lib/jenkins/workspace/DevOps_Unir_2024/Tarea1-ApartadoB/test/rest/api_test.py:30: [B310] Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
